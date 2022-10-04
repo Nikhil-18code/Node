@@ -8,10 +8,9 @@ if(!address){
     console.log(chalk.magenta.bold('Enter place name first...'));
 }
 else{
-    geocode(address,(error,data)=>{
-        if(data!=undefined){
-            console.log(data);
-            forecast(data.latitude,data.longitude,(error,forecastdata)=>{
+    geocode(address,(error,{latitude,longitude,location,state,country}={})=>{
+        if(!error){
+            forecast(latitude,longitude,(error,forecastdata)=>{
                 console.log(forecastdata);
             })
         }

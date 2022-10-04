@@ -2,6 +2,7 @@ const request = require('request');
 const geocode=(address,callback)=>{
     const url='https://api.openweathermap.org/geo/1.0/direct?q=' + address +'&limit=1&appid=b889d7a57afad064573a636d16c5b837';
     request({url:url,json:true},(error,response)=>{
+        console.log(typeof(response));
         if(error){
             callback('Unable to connect to server!',undefined);        
         } 
